@@ -5,6 +5,41 @@ import { Sidebar } from './components/Sidebar'
 import './global.css'
 import styles from './App.module.css'
 
+// author { avatar_url: "", name: "", role: "" }
+// publishedAt: Date
+// content: ""
+
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: "https://github.com/emanoelhenrick.png",
+      name: "Emanoel Henrick",
+      role: "Fullstack Dev"
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋'},
+      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'},
+      { type: 'link', content: 'jane.design/doctorcare'},
+    ],
+    publishedAt: new Date('2023-01-15 20:00:00')
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: "https://github.com/JLTSF.png",
+      name: "Locio Filho",
+      role: "Backend Dev"
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋'},
+      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'},
+      { type: 'link', content: 'jane.design/doctorcare'},
+    ],
+    publishedAt: new Date('2023-01-13 21:00:00')
+  },
+]
+
 function App() {
 
   return (
@@ -14,10 +49,17 @@ function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          <Post
-            author="Manel"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit officiis, enim ipsa voluptate non voluptatum tempore dicta, fugit cumque sed vero maiores est saepe quo. Eius officiis corrupti maxime mollitia."
-          />
+
+          {posts.map(post => {
+            return (
+            <Post
+              author={post.author}
+              content={post.content}
+              publishedAt={post.publishedAt}
+            />
+            )
+          })}
+
         </main>
       </div>
     </div>
